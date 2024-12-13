@@ -23,4 +23,4 @@ jobs:
         with:
           context: Walkwithme/
           push: true
-          tags: Danielo1703/walk-with-me:${{ github.run_number }}
+          tags: danielolu17/walk-with-me:${{ github.run_number }}
