@@ -2,34 +2,27 @@
 
 name: Build and Push Docker Image to Docker Hub
 
-on:
-  push:
-    branches:
-      - main  # Triggers only on push to the main branch
-
+on: push
 jobs:
-  build_and_push:
-    name: Build and Push Docker Image
+  push_to_registry:
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository code
-      - name: Checkout code
+      - name: Check out the repo
         uses: actions/checkout@v3
 
-      # Step 2: Log in to Docker Hub
-      - name: Log in to Docker Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      # Step 3: Build and push the Docker image
-      - name: Build and Push Docker Image
+      - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
-          context: .                # Set to the path where your Dockerfile exists
-          push: true                # Push the image to Docker Hub
-          tags: ${{ secrets.DOCKER_USERNAME }}/walk-with-me:${{ github.run_number }}
+          context: Walkwithme/
+          push: true
+          tags: danielolu17/walk-with-me:${{ github.run_number }}
 
 
