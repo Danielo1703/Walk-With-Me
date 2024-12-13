@@ -21,7 +21,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
-          context: Walkwithme/
+          context: WalkWithMe/
           push: true
           tags: danielolu17/walk-with-me:${{ github.run_number }}
 
